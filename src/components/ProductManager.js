@@ -43,7 +43,9 @@ export default class ProductManager {
         ) {
             console.log("Producto no encontrado");
         } else {
-            console.log(respuesta3.find((product) => product.id === id));
+            let productById = respuesta3.find((product) => product.id === id);
+            console.log(productById);
+            return productById;
         }
         
     }

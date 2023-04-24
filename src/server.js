@@ -1,5 +1,5 @@
 import express from "express"
-import ProductManager from "./components/ProductManager.js"
+import ProductManager from "../src/components/ProductManager.js"
 
 const app = express ()
 app.use(express.urlencoded({extended: true}));
@@ -18,7 +18,8 @@ app.get("/products", async (req,res) => {
 app.get("/products/:id", async (req,res) => {
     let id = parseInt(req.params.id);
     let allProducts = await readProducts
-    let productById = allProducts.find(product => product.id === id)
+    let productById = await productos.getProductsById(id);
+    // let productById = allProducts.find(product => product.id === id)
     res.send(productById)
 })
 
